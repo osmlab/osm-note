@@ -43,5 +43,7 @@ a.button {
     text-shadow:
         0 0 2px #fff;
     font-size:20px;
-    line-height:100px
+    line-height:25px
+    vertical-align:middle;
+    font-weight:bold;
 }

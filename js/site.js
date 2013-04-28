@@ -5,7 +5,7 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 var map_small = L.map('map-small', {
-    draggable: false,
+    dragging: false,
     attributionControl: false,
     zoomControl: false
 });
@@ -20,6 +20,7 @@ d3.select('.geolocate').on('click', function() {
 });
 
 d3.select(window).on('load.addheight', addHeightClasses);
+d3.select('#map-small').on('click.back', unchosen);
 
 function addHeightClasses() {
     var style = document.createElement('style');
@@ -34,23 +35,31 @@ function addHeightClasses() {
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
+d3.select('.accept-note').on('click', function() {
+    chosen(sel_marker.getLatLng());
+});
+var sel_marker = L.marker([0, 0], { draggable: true }).addTo(map);
+
 function geolocated(position) {
     d3.select('.pane-1').style('display', 'none');
     d3.select('.pane-2').style('display', 'block');
-
     map.setView([position.coords.latitude,
         position.coords.longitude], 10);
-
-    var marker = L.marker([position.coords.latitude,
-        position.coords.longitude], {
-            draggable: true
-        }).addTo(map);
-
+    sel_marker.setLatLng([position.coords.latitude,
+        position.coords.longitude]);
     map.invalidateSize();
+}
 
-    d3.select('.accept-note').on('click', function() {
-        chosen(marker.getLatLng());
-    });
+var marker_small = L.marker([0,0], { }).addTo(map_small);
+
+d3.select('.save-note').on('click', function() {
+    save(marker_small.getLatLng(), d3.select('#note-comment').property('value'));
+});
+
+function unchosen() {
+    d3.select('.pane-2').style('display', 'block');
+    d3.select('.pane-3').style('display', 'none');
+    map.invalidateSize();
 }
 
 function chosen(position) {
@@ -58,12 +67,10 @@ function chosen(position) {
     d3.select('.pane-3').style('display', 'block');
 
     map_small.setView(position, 10);
-    var marker = L.marker(position, { }).addTo(map_small);
+    marker_small.setLatLng(position);
     map_small.invalidateSize();
+
     d3.select('#note-comment').node().focus();
-    d3.select('.save-note').on('click', function() {
-        save(marker.getLatLng(), d3.select('#note-comment').property('value'));
-    });
 }
 
 function save(ll, comment) {
@@ -76,6 +83,7 @@ function save(ll, comment) {
         d3.select('.pane-3').style('display', 'none');
         d3.select('.pane-4').style('display', 'block');
         d3.select('.osm-link')
+            .text('note #' + j.properties.id + ' on osm')
             .attr('href', 'http://www.openstreetmap.org/?note=' + j.properties.id);
     };
 }
