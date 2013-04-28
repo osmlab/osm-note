@@ -34,7 +34,13 @@
         </div>
 
         <script src='js/lib/leaflet/leaflet.js'></script>
+        <script src='js/lib/fastclick.js'></script>
         <script src='js/lib/d3.v3.min.js'></script>
         <script src='js/site.js'></script>
+        <script>
+        window.addEventListener('load', function() {
+            new FastClick(document.body);
+        }, false);
+        </script>
     </body>
 </html>
