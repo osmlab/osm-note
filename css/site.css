@@ -1,0 +1,45 @@
+.pane {
+    opacity:1;
+}
+
+.icon-fullscreen {
+    width: 640px;
+    background: url(img/sprite.png) no-repeat;
+    background-size: 320px 320px;
+}
+
+@-webkit-keyframes blinker {  
+  from { opacity: 1.0; }
+  to { opacity: 0.5; }
+}
+
+.pulse {
+  -webkit-animation-name: blinker;  
+  -webkit-animation-iteration-count: infinite;  
+  -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+  -webkit-animation-duration: 800ms; 
+}
+
+.hide {
+  display: none;
+}
+
+textarea {
+    width:100%;
+    border:0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+a.button {
+    display:block;
+    background:#cdf6c9;
+    border-top:1px solid #aaa;
+    color:#111;
+    text-shadow:
+        0 0 2px #fff;
+    font-size:20px;
+    line-height:100px
+}

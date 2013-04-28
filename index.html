@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OSM Mobile Note</title>
+        <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0'>
+        <link rel='stylesheet' type='text/css' href='css/style.css' />
+        <link rel='stylesheet' type='text/css' href='css/site.css' />
+        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+        <link rel='stylesheet' href='js/lib/leaflet/leaflet.css' />
+    </head>
+    <body>
+
+        <div class='container'>
+            <div class='pane-1 height4'>
+                <a class='icon-fullscreen geolocate icon height3'></a>
+                <p class='deemphasize height1 center pad2'>tap above to find your phone</p>
+            </div>
+            <div class='pane-2 height4'>
+                <div id='map' class='full-width height3'></div>
+                <a class='center full-width height1 button accept-note'>
+                    add note
+                </a>
+            </div>
+            <div class='pane-3 height4'>
+                <div id='map-small' class='full-width height1'></div>
+                <textarea placeholder='add a note to the map' class='height2' id='note-comment'></textarea>
+                <a class='center full-width height1 button save-note'>
+                    save note
+                </a>
+            </div>
+            <div class='pane-3 height4'>
+                <a class='center osm-link button height4'>Your note on OSM</a>
+            </div>
+        </div>
+
+        <script src='js/lib/leaflet/leaflet.js'></script>
+        <script src='js/lib/d3.v3.min.js'></script>
+        <script src='js/site.js'></script>
+    </body>
+</html>
