@@ -60,6 +60,7 @@ function chosen(position) {
     map_small.setView(position, 10);
     var marker = L.marker(position, { }).addTo(map_small);
     map_small.invalidateSize();
+    d3.select('#note-comment').node().focus();
     d3.select('.save-note').on('click', function() {
         save(marker.getLatLng(), d3.select('#note-comment').property('value'));
     });
