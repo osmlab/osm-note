@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>OSM Mobile Note</title>
+        <title>OSM Note</title>
         <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0'>
         <link rel='stylesheet' type='text/css' href='css/style.css' />
         <link rel='stylesheet' type='text/css' href='css/site.css' />
+        <link rel='apple-touch-icon-precomposed' href='css/app_icon.png'/>
+        <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta http-equiv='content-type' content='text/html; charset=utf-8' />
         <link rel='stylesheet' href='js/lib/leaflet/leaflet.css' />
     </head>
@@ -14,6 +17,7 @@
             <div class='header full-width'>
                 <a href='#' class='fl icon menu'>menu</a>
                 <a href='#' class='fr icon geolocate'>geolocate</a>
+                <span class='hint geolocate fr'>tap to find &#9654;</span>
             </div>
             <div class='page'>
                 <div class='pane-1 to-accept'>
@@ -23,7 +27,16 @@
                     <a href='#' class='osm-link notify hide full-width'>NOTE SAVED TO OSM</a>
                 </div>
                 <div class='pane-2 full-width'>
-                    <textarea placeholder='add a note to the map' class='height4' id='note-comment'></textarea>
+                    <textarea placeholder='add a note to the map' class='height3' id='note-comment'></textarea>
+                </div>
+                <div class='about hide'>
+                    <h2>Help</h2>
+                    <p>This is an interface for creating notes on <a href='http://openstreetmap.org/'>OpenStreetMap</a>.</p>
+                    <p>Click to locate your phone in the top-right, and the map will move to your current location.
+                    Then click the pencil icon to add a textual note.
+                    Click the checkbox to save.</p>
+                    <p>Maps are &copy; MapBox, data by OpenStreetMap Contributors under the ODbL license. Your
+                    additions through the notes interface are licensed under the ODbL</p>
                 </div>
             </div>
         </div>

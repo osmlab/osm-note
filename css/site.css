@@ -2,6 +2,10 @@ body {
     color:#000;
 }
 
+a {
+    color:#2d54a6 !important;
+}
+
 .header {
     height:60px;
     padding:10px;
@@ -11,6 +15,29 @@ body {
     left:0;
     z-index:99;
     background:#fff;
+}
+
+.hint {
+    color:#555;
+    font-size:14px;
+    text-transform:uppercase;
+}
+
+.hint.geolocate {
+    display:inline-block;
+    line-height:40px;
+    padding:0 10px;
+}
+
+.about {
+    background:#fff;
+    padding:10px;
+    position:absolute;
+    top:60px;
+    z-index:99;
+    bottom:0;
+    right:0;
+    overflow:scroll;
 }
 
 .notify {

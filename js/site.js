@@ -22,12 +22,17 @@ L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png').ad
 var sel_marker = L.marker([0, 0], { draggable: true }).addTo(map);
 
 $('.geolocate').on('click', function() {
+    $('.hint.geolocate').remove();
     navigator.geolocation.getCurrentPosition(geolocated);
 });
 
 $('.accept').on('click', function(e) {
     e.preventDefault();
     chosen(sel_marker.getLatLng());
+});
+
+$('.menu').on('click', function(e) {
+    $('.about').toggleClass('hide');
 });
 
 $('.save').on('click', function(e) {
