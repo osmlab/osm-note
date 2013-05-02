@@ -12,6 +12,30 @@
     document.getElementsByTagName('head')[0].appendChild(style);
 })();
 
+var mapboxIcon = function(fp) {
+    var API = 'http://api.openstreetmap.org/api/0.6/notes.json';
+    fp = fp || {};
+
+    var sizes = {
+            small: [20, 50],
+            medium: [30, 70],
+            large: [35, 90]
+        },
+        size = fp['marker-size'] || 'medium',
+        symbol = (fp['marker-symbol']) ? '-' + fp['marker-symbol'] : '',
+        color = (fp['marker-color'] || '7e7e7e').replace('#', '');
+
+    return L.icon({
+        iconUrl: 'http://a.tiles.mapbox.com/v3/marker/' +
+            'pin-' + size.charAt(0) + symbol + '+' + color +
+            // detect and use retina markers, which are x2 resolution
+            ((L.Browser.retina) ? '@2x' : '') + '.png',
+        iconSize: sizes[size],
+        iconAnchor: [sizes[size][0] / 2, sizes[size][1] / 2],
+        popupAnchor: [0, -sizes[size][1] / 2]
+    });
+};
+
 var map = L.map('map', {
     zoomControl: false,
     attributionControl: false
@@ -19,7 +43,10 @@ var map = L.map('map', {
 
 L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png').addTo(map);
 
-var sel_marker = L.marker([0, 0], { draggable: true }).addTo(map);
+var notesLayer = new leafletOsmNotes();
+notesLayer.addTo(map);
+
+var sel_marker = L.marker([0, 0], { draggable: true, icon: mapboxIcon({ 'marker-color': '#2d54a6' }) }).addTo(map);
 
 $('.geolocate').on('click', function() {
     $('.hint.geolocate').remove();
