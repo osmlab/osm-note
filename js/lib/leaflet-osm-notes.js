@@ -39,7 +39,8 @@ module.exports = window.L.LayerGroup.extend({
                     p.geometry.coordinates[1],
                     p.geometry.coordinates[0]
                 ], {
-                    icon: this.icon(p.properties)
+                    icon: this.icon(p.properties),
+                    opacity: 0.5
                 });
                 marker.bindPopup('<h1>' + p.properties.title + '</h1>' +
                     '<div>' +
