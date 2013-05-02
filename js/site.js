@@ -43,8 +43,16 @@ var sel_marker = L.marker([0, 0], { draggable: true }).addTo(map);
 function geolocated(position) {
     d3.select('.pane-1').style('display', 'none');
     d3.select('.pane-2').style('display', 'block');
-    map.setView([position.coords.latitude,
-        position.coords.longitude], 10);
+
+    var meters = position.coords.accuracy;
+
+    var dLat = meters / 111200,
+        dLng = meters / 111200 / Math.abs(Math.cos(position.coords.latitude));
+
+    var bounds = new L.LatLngBounds(
+        new L.LatLng(position.coords.latitude - dLat, position.coords.longitude - dLng),
+        new L.LatLng(position.coords.latitude + dLat, position.coords.longitude + dLng));
+
     sel_marker.setLatLng([position.coords.latitude,
         position.coords.longitude]);
     map.invalidateSize();
