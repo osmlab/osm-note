@@ -67,6 +67,8 @@ $('.save').on('click', function(e) {
     save(sel_marker.getLatLng(), $('#note-comment').val());
 });
 
+navigator.geolocation.getCurrentPosition(geolocated);
+
 function geolocated(position) {
     var meters = position.coords.accuracy;
 
