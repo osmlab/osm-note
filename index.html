@@ -11,34 +11,26 @@
     <body>
 
         <div class='container'>
-            <div class='pane-1 height4'>
-                <a class='icon-fullscreen geolocate icon height3'></a>
-                <p class='deemphasize height1 center pad2'>tap above to find your phone</p>
+            <div class='header full-width'>
+                <a href='#' class='fl icon menu'>menu</a>
+                <a href='#' class='fr icon geolocate'>geolocate</a>
             </div>
-            <div class='pane-2 height4 hide'>
-                <div id='map' class='full-width height3'></div>
-                <a class='center full-width height1 button accept-note'>
-                    <div class='deemphasize'>move marker above, and then</div>
-                    add note
-                </a>
-            </div>
-            <div class='pane-3 height4 hide'>
-                <div id='map-small' class='full-width height1'></div>
-                <textarea placeholder='add a note to the map' class='height2' id='note-comment'></textarea>
-                <a class='center full-width height1 button save-note'>
-                    save note
-                </a>
-            </div>
-            <div class='pane-4 height4 hide'>
-                <h2 class='pad2'>You just added
-                    <a class='center osm-link height4'></a>
-                </h2>
+            <div class='page'>
+                <div class='pane-1 to-accept'>
+                    <div id='map' class='full-width height4'></div>
+                    <a href='#' class='icon wide accept bm'>accept</a>
+                    <a href='#' class='icon wide save bm'>save</a>
+                    <a href='#' class='osm-link notify hide full-width'>NOTE SAVED TO OSM</a>
+                </div>
+                <div class='pane-2 full-width'>
+                    <textarea placeholder='add a note to the map' class='height4' id='note-comment'></textarea>
+                </div>
             </div>
         </div>
 
         <script src='js/lib/leaflet/leaflet.js'></script>
         <script src='js/lib/fastclick.js'></script>
-        <script src='js/lib/d3.v3.min.js'></script>
+        <script src='js/lib/zepto.js'></script>
         <script src='js/site.js'></script>
         <script>
         window.addEventListener('load', function() {
