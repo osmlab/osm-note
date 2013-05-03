@@ -1,5 +1,6 @@
 body {
     color:#000;
+    background:#eee;
 }
 
 a {
@@ -9,7 +10,7 @@ a {
 .header {
     height:60px;
     padding:10px;
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid #222;
     position:fixed;
     top:0;
     left:0;
@@ -59,11 +60,24 @@ a {
     display:none;
 }
 
-.to-save .accept {
-    display:none;
+.button {
+    background: #15ab45;
+    color:#fff !important;
+    display:inline-block;
+    height:40px;
+    width:100%;
+    text-align:center;
 }
 
-a.icon {
+.button span {
+    line-height:40px;
+}
+
+.button .icon {
+    display:inline-block;
+}
+
+.icon {
     width:40px;
     height:40px;
     background: url(sprite2.png) no-repeat;
@@ -72,23 +86,23 @@ a.icon {
     overflow:hidden;
 }
 
-a.icon.wide {
+.icon.wide {
     width:80px;
 }
 
-a.icon.geolocate {
+.icon.geolocate {
     background-position:0 0;
 }
 
-a.icon.menu {
+.icon.menu {
     background-position:-40px 0;
 }
 
-a.icon.accept {
+.icon.accept {
     background-position:-80px -40px;
 }
 
-a.icon.save {
+.icon.save {
     background-position:0px -40px;
 }
 
@@ -99,12 +113,15 @@ a.icon.save {
     margin-left:-40px;
 }
 
+.pane-2 {
+    border-top:1px solid #222;
+    padding:10px;
+}
+
 textarea {
-    width:100%;
     border:0;
+    width:100%;
     font-size:18px;
-    padding:5px;
-    margin:0;
     color:inherit;
 }
 

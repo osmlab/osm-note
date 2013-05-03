@@ -168,13 +168,16 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <rect
-       style="color:#000000;fill:#ffffff;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994000000003;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect4093"
        width="114"
        height="114"
        x="320"
        y="184.7244"
-       rx="0" />
+       rx="0"
+       inkscape:export-filename="/Users/tmcw/src/mobile-note/css/app_icon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        style="color:#000000;fill:#2d54a6;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="m 376.99999,201.7244 c -20.98682,0 -38,17.01318 -38,38 0,20.98683 17.01318,38 38,38 20.98683,0 38.00001,-17.01317 38.00001,-38 0,-20.98682 -17.01318,-38 -38.00001,-38 z m -4,6.25 0,13.75 8,0 0,-13.75 c 14.47476,1.80504 25.94496,13.27525 27.75001,27.75 l -13.75,0 0,8 13.75,0 c -1.80505,14.47475 -13.27525,25.94496 -27.75001,27.75 l 0,-13.75 -8,0 0,13.75 c -14.47475,-1.80504 -25.94496,-13.27525 -27.75,-27.75 l 13.75,0 0,-8 -13.75,0 c 1.80504,-14.47475 13.27525,-25.94496 27.75,-27.75 z"

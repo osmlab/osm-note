@@ -94,9 +94,9 @@ function chosen(position) {
 }
 
 $('#note-comment').on('change', function() {
-    $('.pane-1')
-        .removeClass('to-accept')
-        .addClass('to-save');
+    // $('.pane-1')
+    //     .removeClass('to-accept')
+    //     .addClass('to-save');
 });
 
 function save(ll, comment) {
@@ -108,7 +108,6 @@ function save(ll, comment) {
         var j = JSON.parse(h.responseText);
         window.scrollTo(0, 0);
         $('#note-comment').val('');
-        $('.pane-1').removeClass('to-save').addClass('to-accept');
         $('.osm-link')
             .attr('href', 'http://www.openstreetmap.org/?note=' + j.properties.id)
             .removeClass('hide');
