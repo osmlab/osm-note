@@ -1,0 +1,30 @@
+{
+  "name": "mobile-note",
+  "version": "0.0.0",
+  "description": "mobile data collection for openstreetmap",
+  "main": "index.js",
+  "dependencies": {
+    "leaflet-osm-notes": "0.0.1",
+    "d3": "~3.1.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/osmlab/mobile-note.git"
+  },
+  "keywords": [
+    "openstreetmap",
+    "map",
+    "note"
+  ],
+  "author": "Tom MacWright <tom@macwright.org>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "5e07719901813e695b138094b636f50f83ef1d85",
+  "bugs": {
+    "url": "https://github.com/osmlab/mobile-note/issues"
+  }
+}
