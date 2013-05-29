@@ -16,7 +16,8 @@ var leafletOsmNotes = require('leaflet-osm-notes'),
 })();
 
 var map = L.map('map', {
-    attributionControl: false
+    attributionControl: false,
+    zoomControl: false
 }).setView([0, 0], 2);
 
 // Once we've got a position, zoom and center the map

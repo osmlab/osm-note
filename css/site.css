@@ -1,129 +1,53 @@
 body {
-    color:#000;
-    background:#eee;
+  margin:0;
+  font:normal 14px/20px 'Helvetica Neue';
+  padding:0;
+  -webkit-font-smoothing:antialiased;
+  background:#eee;
 }
 
-a {
-    color:#2d54a6 !important;
-}
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }
 
-.header {
-    height:50px;
-    padding:10px;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:99;
-    background:#2d54a6;
-}
-
-.hint {
-    color:#555;
-    font-size:14px;
-    text-transform:uppercase;
-}
-
-.hint.geolocate {
-    display:inline-block;
-    line-height:40px;
-    padding:0 10px;
-}
-
-.about {
-    background:#fff;
-    padding:10px;
-    position:absolute;
-    top:60px;
-    z-index:99;
-    bottom:0;
-    right:0;
-    overflow:scroll;
-}
-
-.notify {
-    background:#fbe367;
-    position:absolute;
-    z-index:99;
-    top:60px;
-    color:#000 !important;
-    font-weight:bold;
-    text-align:center;
-    padding:5px;
-}
-
-.page {
-    margin-top:60px;
-}
-
-.to-accept .save {
-    display:none;
-}
-
-.button {
-    background: #15ab45;
-    color:#fff !important;
-    display:inline-block;
-    height:40px;
-    width:100%;
-    text-align:center;
-}
-
-.button span {
-    line-height:40px;
-}
-
-.button .icon {
-    display:inline-block;
-}
-
-.icon {
-    width:40px;
-    height:40px;
-    background: url(sprite2.png) no-repeat;
-    background-size: 320px 960px;
-    text-indent:-1000px;
+#map {
+    height:280px;
     overflow:hidden;
+    border-bottom:1px solid #aaa;
 }
 
-.icon.wide {
-    width:80px;
+.curvy {
+    border:1px solid #ccc;
+    border-top-color:#aaa;
+    border-left-color:#aaa;
+    border-radius:3px !important;
 }
 
-.icon.geolocate {
-    background-position:0 0;
-}
-
-.icon.menu {
-    background-position:-40px 0;
-}
-
-.icon.accept {
-    background-position:-80px -40px;
-}
-
-.icon.save {
-    background-position:0px -40px;
-}
-
-.bm {
-    position:absolute;
-    bottom:0;
-    left:50%;
-    margin-left:-40px;
-}
-
-.pane-2 {
-    border-top:1px solid #222;
-    padding:10px;
+.pad1 {
+    padding:5px 5px 0 5px;
 }
 
 textarea {
-    border:0;
+    font:normal 14px/20px 'Helvetica Neue';
     width:100%;
-    font-size:18px;
-    color:inherit;
+    background:#fff;
+    height:100px;
+    padding:2px 5px;
+    box-shadow:none;
+    margin:0;
+    -webkit-appearance:none;
 }
 
-.full-width {
-  width: 100%;
+button {
+    margin:0;
+    font:normal 14px/20px 'Helvetica Neue';
+    -webkit-appearance:none;
+    background:#0078e7;
+    color:#fff;
+    width:100%;
+    padding:10px;
+    border:0;
+    border-radius:3px;
 }

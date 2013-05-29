@@ -3,7 +3,6 @@
     <head>
         <title>OSM Note</title>
         <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0'>
-        <link rel='stylesheet' type='text/css' href='css/style.css' />
         <link rel='stylesheet' type='text/css' href='css/site.css' />
         <link rel='apple-touch-icon-precomposed' href='css/app_icon.png'/>
         <meta name='apple-mobile-web-app-status-bar-style' content='default' />
@@ -12,21 +11,16 @@
         <link rel='stylesheet' href='js/lib/leaflet/leaflet.css' />
     </head>
     <body>
-
-        <div class='container'>
-            <div class='header full-width'>
-                <a href='#' class='fl icon menu'>menu</a>
-                <a href='#' class='fr icon geolocate'>geolocate</a>
-            </div>
-            <div class='page'>
-                <div class='pane-1 to-accept'>
-                    <div id='map' class='full-width height3'></div>
-                    <a href='#' class='osm-link notify hide full-width'>NOTE SAVED TO OSM</a>
+        <div>
+            <div>
+                <div id='map'></div>
+                <div class='pad1'>
+                    <textarea placeholder='report issues with the map, features that should be added, or save details for adding tags later'
+                        class='curvy'
+                        id='note-comment'></textarea>
+                    <button>Save</button>
                 </div>
-                <div class='pane-2 full-width'>
-                    <textarea placeholder='report issues with the map, features that should be added, or save details for adding tags later' class='height1' id='note-comment'></textarea>
-                </div>
-                <div class='about hide'>
+                <div>
                     <h2>Help</h2>
                     <p>This is an interface for creating notes on <a href='http://openstreetmap.org/'>OpenStreetMap</a>.</p>
                     <p>Click to locate your phone in the top-right, and the map will move to your current location.
@@ -39,9 +33,7 @@
         </div>
 
         <script src='js/lib/leaflet/leaflet.js'></script>
-        <script src='js/lib/leaflet-osm-notes.js'></script>
         <script src='js/lib/fastclick.js'></script>
-        <script src='js/lib/zepto.js'></script>
         <script src='js/site.js'></script>
         <script>
         window.addEventListener('load', function() {
