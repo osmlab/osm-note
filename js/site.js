@@ -1,5 +1,5 @@
 (function addHeightClasses() {
-    var TOP = 60; // top margin
+    var TOP = 50; // top margin
     var style = document.createElement('style');
     style.type = 'text/css';
     var txt = '';
@@ -37,9 +37,11 @@ var mapboxIcon = function(fp) {
 };
 
 var map = L.map('map', {
-    zoomControl: false,
     attributionControl: false
 }).setView([0, 0], 2);
+
+// Add zoom controls for systems without touch zoom
+if (!map.touchZoom) L.Control.zoom().addTo(map);
 
 L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png').addTo(map);
 
