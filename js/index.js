@@ -8,7 +8,11 @@ var map = L.map('map', {
     zoomControl: false
 }).setView([0, 0], 2);
 
-map.on('locationfound', function(e) { map.fitBounds(e.bounds); });
+map.on('locationfound', function(e) {
+    map.fitBounds(e.bounds);
+    sel_marker.setLatLng(map.getCenter());
+});
+
 map.locate();
 
 if (!map.touchZoom) L.Control.zoom().addTo(map);
@@ -23,6 +27,11 @@ if (window.devicePixelRatio > 1) {
         subdomains: 'abcd'
     }).addTo(map);
 }
+
+var sel_marker = L.marker([0, 0], {
+    draggable: true,
+    icon: mapboxIcon({ 'marker-color': '#2d54a6' })
+}).addTo(map);
 
 // Authentication
 // ----------------------------------------------------------------------------
@@ -64,26 +73,14 @@ if (location.href.indexOf('oauth_token') !== -1) {
     });
 }
 
-// Notes Layer
-// ----------------------------------------------------------------------------
-var notesLayer = new leafletOsmNotes();
-notesLayer.addTo(map);
-
-// The Marker Drag Interface
-// ----------------------------------------------------------------------------
-var sel_marker = L.marker([0, 0], {
-    draggable: true,
-    icon: mapboxIcon({ 'marker-color': '#2d54a6' })
-}).addTo(map);
-
-$('.save').on('click tap', function(e) {
-    e.preventDefault();
-    save(sel_marker.getLatLng(), $('#note-comment').val());
-});
-
 // Saving Notes
 // ----------------------------------------------------------------------------
-function save(ll, comment) {
+$('.save').on('click tap', save);
+
+function save(e) {
+    e.preventDefault();
+    var ll = sel_marker.getLatLng(),
+        comment = $('#note-comment').val();
     var path = '/api/0.6/notes.json',
         API = 'http://api.openstreetmap.org/' + path,
         content = 'lat=' + ll.lat + '&lon=' +
