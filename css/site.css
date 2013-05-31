@@ -13,7 +13,7 @@ body {
   }
 
 #map {
-    height:280px;
+    height:150px;
     overflow:hidden;
     border-bottom:1px solid #aaa;
 }
@@ -40,9 +40,9 @@ textarea {
     -webkit-appearance:none;
 }
 
-button {
+button.big {
     margin:0;
-    font:normal 14px/20px 'Helvetica Neue';
+    font:bold 16px/20px 'Helvetica Neue';
     -webkit-appearance:none;
     background:#0078e7;
     color:#fff;
@@ -50,4 +50,31 @@ button {
     padding:10px;
     border:0;
     border-radius:3px;
+    border-bottom:2px solid #00315F;
+}
+
+.tiny {
+    font:normal 9px/11px 'Helvetica Neue';
+}
+
+.small {
+    font:normal 12px/14px 'Helvetica Neue';
+}
+
+.deemphasize {
+    color:#aaa;
+}
+
+.center {
+    text-align:center;
+}
+
+a.deemphasize {
+    color:#999;
+    border-bottom:1px solid #999;
+    text-decoration:none;
+}
+
+.drop {
+    margin-top:10px;
 }

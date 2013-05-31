@@ -16,24 +16,24 @@
                 <div id='map'></div>
                 <div class='pad1'>
                     <textarea placeholder='report issues with the map, features that should be added, or save details for adding tags later'
-                        class='curvy'
-                        id='note-comment'></textarea>
-                    <button>Save</button>
+                        class='curvy' id='note-comment'></textarea>
+                    <button class='big save'>Save</button>
+                    <div class='center pad1 drop'>
+                        <a href='#' class='small deemphasize login'>Log In</a>
+                    </div>
                 </div>
-                <div>
-                    <h2>Help</h2>
-                    <p>This is an interface for creating notes on <a href='http://openstreetmap.org/'>OpenStreetMap</a>.</p>
-                    <p>Click to locate your phone in the top-right, and the map will move to your current location.
-                    Then click the pencil icon to add a textual note.
-                    Click the checkbox to save.</p>
-                    <p>Maps are &copy; MapBox, data by OpenStreetMap Contributors under the ODbL license. Your
-                    additions through the notes interface are licensed under the ODbL</p>
+                <div class='pad1'>
+                    <p class='tiny deemphasize'>
+                    Maps are &copy; MapBox, data by OpenStreetMap Contributors under the ODbL license. Your
+                    notes are licensed under the ODbL
+                    </p>
                 </div>
             </div>
         </div>
 
         <script src='js/lib/leaflet/leaflet.js'></script>
         <script src='js/lib/fastclick.js'></script>
+        <script src='js/lib/zepto.min.js'></script>
         <script src='js/site.js'></script>
         <script>
         window.addEventListener('load', function() {

@@ -1,86 +1,110 @@
 var leafletOsmNotes = require('leaflet-osm-notes'),
-    d3 = require('d3');
+    osmAuth = require('osm-auth');
 
-(function addHeightClasses() {
-    var TOP = 50; // top margin
-    var style = document.createElement('style');
-    style.type = 'text/css';
-    var txt = '';
-    var fourth = (window.innerHeight - TOP) / 4;
-    for (var i = 1; i <= 4; i++) {
-        txt += '.height' + i + '{height:' + (fourth * i) + 'px;}';
-        txt += '.topmargin' + i + '{margin-top:' + (fourth * i) + 'px;}';
-    }
-    style.innerHTML = txt;
-    document.getElementsByTagName('head')[0].appendChild(style);
-})();
-
+// Map Setup
+// ----------------------------------------------------------------------------
 var map = L.map('map', {
     attributionControl: false,
     zoomControl: false
 }).setView([0, 0], 2);
 
-// Once we've got a position, zoom and center the map
-// on it, and add a single marker.
-map.on('locationfound', function(e) {
-    map.fitBounds(e.bounds);
-});
-
+map.on('locationfound', function(e) { map.fitBounds(e.bounds); });
 map.locate();
 
-// Add zoom controls for systems without touch zoom
 if (!map.touchZoom) L.Control.zoom().addTo(map);
 
-L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png').addTo(map);
+if (window.devicePixelRatio > 1) {
+    L.tileLayer('http://{s}.tiles.mapbox.com/v3/tmcw.map-6s7ux6dj/{z}/{x}/{y}.png64', {
+        subdomains: 'abcd',
+        detectRetina: true
+    }).addTo(map);
+} else {
+    L.tileLayer('http://{s}.tiles.mapbox.com/v3/tmcw.map-7s15q36b/{z}/{x}/{y}.png64', {
+        subdomains: 'abcd'
+    }).addTo(map);
+}
 
+// Authentication
+// ----------------------------------------------------------------------------
+var auth = osmAuth({
+    oauth_secret: 'ayvoniSvY6KaDMAsdBJBa99CZDLWRrMmuQxvNtuA',
+    oauth_consumer_key: '963ilxYFlxJgmEV8471TnzL6yKiIukT0eO6bHwCU',
+    singlepage: true,
+    landing: 'land_single.html'
+});
+
+function login(e) {
+    e.preventDefault();
+    auth.logout();
+    auth.authenticate(function() {
+        showUser();
+    });
+}
+
+function showUser() {
+    if (!auth.authenticated()) return;
+    auth.xhr({
+        method: 'GET',
+        path: '/api/0.6/user/details'
+    }, function(err, details) {
+        if (err) return;
+        $('.login')
+            .text('logged in as ' + details.getElementsByTagName('user')[0].getAttribute('display_name'));
+    });
+}
+
+$('.login').on('click tap', login);
+
+showUser();
+
+if (location.href.indexOf('oauth_token') !== -1) {
+    var token = location.href.split('=')[1];
+    auth.bootstrapToken(token, function() {
+        showUser();
+    });
+}
+
+// Notes Layer
+// ----------------------------------------------------------------------------
 var notesLayer = new leafletOsmNotes();
 notesLayer.addTo(map);
 
+// The Marker Drag Interface
+// ----------------------------------------------------------------------------
 var sel_marker = L.marker([0, 0], {
     draggable: true,
     icon: mapboxIcon({ 'marker-color': '#2d54a6' })
 }).addTo(map);
 
-d3.select('.geolocate').on('click', function() {
-    $('.hint.geolocate').remove();
-});
-
-d3.select('.accept').on('click', function(e) {
-    e.preventDefault();
-    chosen(sel_marker.getLatLng());
-});
-
-d3.select('.menu').on('click', function(e) {
-    d3.select('.about').toggleClass('hide');
-});
-
-d3.select('.save').on('click', function(e) {
+$('.save').on('click tap', function(e) {
     e.preventDefault();
     save(sel_marker.getLatLng(), $('#note-comment').val());
 });
 
-function chosen(position) {
-    window.scrollTo(0, 502);
-    $('#note-comment').focus();
-    return false;
-}
-
+// Saving Notes
+// ----------------------------------------------------------------------------
 function save(ll, comment) {
-    var h = new window.XMLHttpRequest();
-    h.open('POST', 'http://api.openstreetmap.org/api/0.6/notes.json', true);
-    h.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    h.send('lat=' + ll.lat + '&lon=' + ll.lng + '&text=' + encodeURIComponent(comment));
-    h.onload = function(resp) {
-        var j = JSON.parse(h.responseText);
-        window.scrollTo(0, 0);
+    var path = '/api/0.6/notes.json',
+        API = 'http://api.openstreetmap.org/' + path,
+        content = 'lat=' + ll.lat + '&lon=' +
+            ll.lng + '&text=' + encodeURIComponent(comment);
+
+    if (auth.authenticated()) {
+        auth.xhr({
+            method: 'POST',
+            path: path,
+            content: content
+        }, success);
+    } else {
+        var h = new window.XMLHttpRequest();
+        h.open('POST', API, true);
+        h.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        h.send(content);
+        h.onload = success;
+    }
+    function success(resp) {
         $('#note-comment').val('');
-        $('.osm-link')
-            .attr('href', 'http://www.openstreetmap.org/?note=' + j.properties.id)
-            .removeClass('hide');
-        window.setTimeout(function() {
-            $('.osm-link').addClass('hide');
-        }, 5000);
-    };
+    }
 }
 
 function mapboxIcon(fp) {
@@ -105,4 +129,4 @@ function mapboxIcon(fp) {
         iconAnchor: [sizes[size][0] / 2, sizes[size][1] / 2],
         popupAnchor: [0, -sizes[size][1] / 2]
     });
-};
+}
