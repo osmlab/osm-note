@@ -1,4 +1,5 @@
 var leafletOsmNotes = require('leaflet-osm-notes'),
+    store = require('store'),
     osmAuth = require('osm-auth');
 
 // Map Setup
@@ -10,7 +11,7 @@ var map = L.map('map', {
 
 map.on('locationfound', function(e) {
     map.fitBounds(e.bounds);
-    sel_marker.setLatLng(map.getCenter());
+    sel_marker.setLatLng(e.latlng);
 });
 
 map.locate();
@@ -65,6 +66,7 @@ function showUser() {
 $('.login').on('click tap', login);
 
 showUser();
+updateList();
 
 if (location.href.indexOf('oauth_token') !== -1) {
     var token = location.href.split('=')[1];
@@ -97,13 +99,35 @@ function save(e) {
         h.open('POST', API, true);
         h.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         h.send(content);
-        h.onload = success;
+        h.onload = function(e) {
+            success(null, h.responseText);
+        };
     }
-    function success(resp) {
+
+    function success(err, resp) {
+        if (err) return;
+        store.set('savednotes', (store.get('savednotes') || [])
+            .concat([JSON.parse(resp)]));
+        updateList();
         $('#note-comment').val('');
     }
 }
 
+function updateList() {
+    var container = $('ul#saved-notes').html('');
+    var savedNotes = store.get('savednotes');
+    if (savedNotes && savedNotes.length) {
+        savedNotes.forEach(function(note) {
+            $('<a></a>')
+                .text(note.properties.comments[0].text)
+                .attr('href', 'http://www.openstreetmap.org/browse/note/' + note.properties.id)
+                .appendTo(container);
+        });
+    }
+}
+
+// Marker Icon Helper
+// ----------------------------------------------------------------------------
 function mapboxIcon(fp) {
     var API = 'http://api.openstreetmap.org/api/0.6/notes.json';
     fp = fp || {};
