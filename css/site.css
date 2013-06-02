@@ -83,6 +83,30 @@ button.big {
     border:0;
     border-radius:3px;
     border-bottom:2px solid #00315F;
+    transition:background 100ms ease-in;
+}
+
+button.big.saving {
+    border-bottom:2px solid #9ECEB1;
+    background:#9ECEB1;
+}
+
+button.big.saved {
+    border-bottom:2px solid #19793F;
+    background:#30ad63;
+}
+
+button.geolocate {
+    position:absolute;
+    top:5px;
+    right:5px;
+    background:url(sprite3.png) transparent;
+    background-size:125px 25px;
+    width:25px;
+    height:25px;
+    text-indent:-1000px;
+    overflow:hidden;
+    border:0;
 }
 
 .tiny {

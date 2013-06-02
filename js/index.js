@@ -63,6 +63,10 @@ function showUser() {
     });
 }
 
+$('.geolocate').on('click tap', function() {
+    map.locate();
+});
+
 $('.login').on('click tap', login);
 
 showUser();
@@ -81,13 +85,18 @@ $('.save').on('click tap', save);
 
 function save(e) {
     e.preventDefault();
+
     var ll = sel_marker.getLatLng(),
         comment = $('#note-comment').val();
+
+    if (!comment) return;
+
     var path = '/api/0.6/notes.json',
         API = 'http://api.openstreetmap.org/' + path,
         content = 'lat=' + ll.lat + '&lon=' +
             ll.lng + '&text=' + encodeURIComponent(comment);
 
+    $('.save').addClass('saving');
     if (auth.authenticated()) {
         auth.xhr({
             method: 'POST',
@@ -105,11 +114,16 @@ function save(e) {
     }
 
     function success(err, resp) {
+        $('.save').removeClass('saving');
         if (err) return;
         store.set('savednotes', (store.get('savednotes') || [])
             .concat([JSON.parse(resp)]));
         updateList();
         $('#note-comment').val('');
+        $('.save').addClass('saved');
+        window.setTimeout(function() {
+            $('.save').removeClass('saved');
+        }, 1000);
     }
 }
 

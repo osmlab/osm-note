@@ -7,7 +7,9 @@
     "leaflet-osm-notes": "0.0.1",
     "d3": "~3.1.10",
     "osm-auth": "~0.2.3",
-    "store": "~1.3.8"
+    "store": "~1.3.8",
+    "glob": "~3.2.1",
+    "uuid": "~1.4.1"
   },
   "devDependencies": {},
   "scripts": {
