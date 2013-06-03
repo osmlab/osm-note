@@ -138,6 +138,9 @@ function updateList() {
                 .attr('href', 'http://www.openstreetmap.org/browse/note/' + note.properties.id)
                 .appendTo(container);
         });
+        $('.saved-notes').removeClass('hide');
+    } else {
+        $('.saved-notes').addClass('hide');
     }
 }
 

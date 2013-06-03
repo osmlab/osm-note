@@ -134,3 +134,7 @@ a.deemphasize {
 .drop {
     margin-top:10px;
 }
+
+.hide {
+    display:none;
+}
