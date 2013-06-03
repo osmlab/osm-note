@@ -1,21 +1,15 @@
 CACHE MANIFEST
-# v6
+# v9
 
 NETWORK:
 *
 
 CACHE:
-# js/index.js
-# js/site.js
-# js/lib/zepto.min.js
-# js/lib/fastclick.js
-# js/lib/leaflet/leaflet.js
-# js/lib/leaflet/leaflet.css
-# css/app_icon.png
-# css/icon.png
-# css/icon.svg
-# css/site.css
-# css/sprite.svg
-# css/sprite2.png
-# css/sprite2.svg
-# css/style.css
+js/site.min.js
+js/lib.min.js
+css/icon.png
+css/site.css
+css/sprite2.png
+css/style.css
+css/add2home.css
+js/lib/leaflet/leaflet.css
