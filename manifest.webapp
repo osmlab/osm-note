@@ -1,0 +1,26 @@
+{  "version": "0.1",
+  "name": "osm-note",
+  "description": "mobile data collection for openstreetmap", 
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/assets/img/mobile/icon-16.png", 
+    "48": "/assets/img/mobile/icon-48.png",
+    "60": "/assets/img/mobile/icon-60.png",
+    "128": "/assets/img/mobile/icon-128.png"
+  },
+  "developer": {
+    "name": "Tom MacWright <tom@macwright.org>",
+    "url": "https://github.com/osmlab/osm-note.git"
+  },
+  "locales": {
+    "fr": {
+      "description": "Application de saisie de notes dans OSM"
+    }
+  },
+  "default_locale": "en",
+  "permissions": {
+    "geolocation": {
+      "description": "to center the map"
+    }
+  }
+}
