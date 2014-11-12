@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest='mobile.manifest'>
+<html>
     <head>
         <title>OSM Note</title>
         <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0'>
@@ -10,7 +10,7 @@
         <meta http-equiv='content-type' content='text/html; charset=utf-8' />
         <link rel='stylesheet' href='js/lib/leaflet/leaflet.css' />
         <link rel='stylesheet' type='text/css' href='css/add2home.css' />
-        <script src='js/lib.min.js'></script>
+        <script src='js/lib/add2home.js'></script>
     </head>
     <body>
         <div>
@@ -25,7 +25,7 @@
                         <a href='#' class='small deemphasize login'>Log In</a>
                     </div>
                 </div>
-                <div class='pad1 drop saved-notes'>
+                <div class='pad1 drop'>
                     <h2><span>Saved Notes</span></h2>
                     <hr class='through' />
                     <ul id='saved-notes' class='pad1'>
@@ -39,7 +39,13 @@
                 </div>
             </div>
         </div>
-        <script src='js/site.min.js'></script>
+
+        <script src='js/lib/leaflet/leaflet.js'></script>
+		<script src='js/leaflet-hash/leaflet-hash.js'></script>		
+        <script src='js/lib/fastclick.js'></script>
+        <script src='js/lib/zepto.min.js'></script>
+        <script src='js/site.js'></script>
+
         <script>
         window.addEventListener('load', function() {
             new FastClick(document.body);

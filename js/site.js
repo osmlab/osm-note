@@ -16,6 +16,8 @@ map.on('locationfound', function(e) {
 });
 
 map.locate();
+	
+var hash = new L.Hash(map);	
 
 if (!map.touchZoom) L.Control.zoom().addTo(map);
 
