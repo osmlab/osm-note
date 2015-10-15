@@ -3,10 +3,11 @@
   "description": "mobile data collection for openstreetmap", 
   "launch_path": "/index.html",
   "icons": {
-    "16": "/assets/img/mobile/icon-16.png", 
-    "48": "/assets/img/mobile/icon-48.png",
-    "60": "/assets/img/mobile/icon-60.png",
-    "128": "/assets/img/mobile/icon-128.png"
+    "16": "/img/logo-16.png",  
+    "30": "/img/logo-30.png",
+    "48": "/img/logo-48.png",    
+    "60": "/img/logo-60.png",
+    "128": "/img/logo-128.png"
   },
   "developer": {
     "name": "Tom MacWright <tom@macwright.org>",
