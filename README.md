@@ -1,4 +1,4 @@
-## [mobile-note](http://osmlab.github.io/mobile-note/)
+## [osm-note](https://osmlab.github.io/osm-note/)
 
 ![](screenshot.png)
 
